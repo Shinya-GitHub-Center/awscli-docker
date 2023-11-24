@@ -21,7 +21,7 @@ docker exec -it <created docker container name> bash
 6. That's it! You can now use `aws` command to manage your aws account under the authority of logged-in IAM user.
 
 ## To switch role
-1. If you intend to use cross account by switching role to another account, please fill out the variables in `./awscli/workdir/vars-switchrole.txt`
+1. If you intend to use cross account by switching role to another account, please fill out the variables in `./aws-cli/workdir/vars-switchrole.txt`
 2. Execute "switch-role" shell script in the workdir directory in order to switch role to another account:  
 (Do not use "bash" command when execute script file, since this can not transfer environment variables into your docker machine, I don't know why...)
 ```
@@ -45,7 +45,7 @@ aws ssm start-session --target <instance-id>
 5. To finish the session, just `exit`
 
 ## Access to EC2 instance using traditional ssh but over Session Manager
-1. Locate your EC2 instance's keyfile into `./awscli/.ssh/keyfiles/` and modify `./awscli/.ssh/config` file
+1. Locate your EC2 instance's keyfile into `./aws-cli/.ssh/keyfiles/` and modify `./aws-cli/.ssh/config` file
 2. Path to the key files has to be full path. HostName has to be the instance id. It is not necessary to change anything at ProxyCommand section
 3. Change the permission with the key (from the docker container)
 ```
@@ -66,5 +66,5 @@ mssh ubuntu@<instance-id>
 
 ## Please
 * Do not delete `./.env` file after copied your credential keys, and keep this file secret! Do not upload or share to any public places
-* Do not delete any key files inside `./awscli/.ssh/keyfiles` folder. They are not supposed to be issued again due to the cloud vendor's strict rules, and keep the keyfiles secret - do not upload or share to any public places
+* Do not delete any key files inside `./aws-cli/.ssh/keyfiles` folder. They are not supposed to be issued again due to the cloud vendor's strict rules, and keep the keyfiles secret - do not upload or share to any public places
 * If you want to use another UID & GID inside the docker container, in order to match your host's UID & GID, please change the Dockerfile's `ARG UID=1000` & `ARG GID=1000` to your desired number
