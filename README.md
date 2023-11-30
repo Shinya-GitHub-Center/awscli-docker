@@ -5,11 +5,11 @@ AWS management tool - AWS CLI - docker container version
 
 ## Basic use
 1. Download the source of the latest commit or latest release of this repository, then unzip and rename the root folder's name to your favorite project name. I personally prefer the following:  
-`<AWS root account name>_<IAM user name>_CTNR`  
+`<IAM user name>@<AWS root account name>`  
 For example, it goes like this!  
-`JamesAWS_main-user-01_CTNR`
+`main-user-01@JamesAWS`
 2. Rename the file name `.env.sample` to `.env`
-3. Set your own credential keys into .env file (this credential keys are issued when you create your IAM user)
+3. Set your own credential keys into .env file (this credential keys can be generated after you have created an IAM user)
 4. On your linux environment, go to the directory where this project's `docker-compose.yml` file exists, then run the following command:
 ```
 docker compose up -d
