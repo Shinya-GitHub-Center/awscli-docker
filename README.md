@@ -1,4 +1,4 @@
-# [Wiki Site : AUTOMATION is a key to survive this world](https://github.com/Shinya-GitHub-Center/awscli-docker/wiki)
+# [Wiki Site : Let's study a basic IaaS skill by installing commonly used software](https://github.com/Shinya-GitHub-Center/awscli-docker/wiki)
 
 ## About
 AWS management tool - AWS CLI - docker container version
