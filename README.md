@@ -1,12 +1,13 @@
 # [Wiki Site : Let's study a basic IaaS skill by installing commonly used software](https://github.com/Shinya-GitHub-Center/awscli-docker/wiki)
 
 ## About
-AWS management tool - AWS CLI - docker container version
+- AWS management tool - AWS CLI - docker container version
+- Including simple WordPress deployment test script. If you want to try this test deployment over aws server, login with IAM user who was attached AdministratorAccess policy, then `bash ./infra-setup.sh` @workdir directory.
 
 ## Basic use
 1. Download the source of the latest commit or latest release of this repository, then unzip and rename the root folder's name to your favorite one.
 2. Rename the file name `.env.sample` to `.env`
-3. Set your own credential keys into .env file (this credential keys can be generated after you have created an IAM user)
+3. Set your own access key into .env file (this credential key can be generated after you have created an IAM user)
 4. On your linux environment, go to the directory where this project's `docker-compose.yml` file exists, then run the following command:
 ```
 docker compose up -d
@@ -55,11 +56,13 @@ ssh myomgweb
 
 ## Access to EC2 instance using EC2 Instance Connect
 1. Please make sure if your instance's operation system is supported, along with available regions from [here](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-connect-methods.html#ic-limitations)
-2. Run the command (if your instance is ubuntu)
+2. Run the command
 ```
+mssh ec2-user@<instance-id>
+or
 mssh ubuntu@<instance-id>
 ```
-3. This EC2 Instance Connect can only be activated under a rather strict condition, therefore please read through the aws official docs on your own
+3. This EC2 Instance Connect over local aws-cli command line does not require key pair generation beforehand, but requires public IP address (can not connect to private subnet)
 
 ## Please
 * Do not delete `./.env` file after copied your credential keys, and keep this file secret! Do not upload or share to any public places
