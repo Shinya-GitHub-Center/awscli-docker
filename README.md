@@ -63,6 +63,7 @@ or
 mssh ubuntu@<instance-id>
 ```
 3. This EC2 Instance Connect over local aws-cli command line does not require key pair generation beforehand, but requires public IP address (can not connect to private subnet)
+4. If you use the latest 'Amazon Linux 2023' or later for the EC2 disk image, please enable both DNS resolution and DNS hostname upon creating VPC resource
 
 ## Please
 * Do not delete `./.env` file after copied your credential keys, and keep this file secret! Do not upload or share to any public places

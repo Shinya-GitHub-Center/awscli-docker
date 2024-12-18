@@ -191,6 +191,29 @@ RDS_WAIT_PID=$!
 wait $EC2_WAIT_PID
 wait $RDS_WAIT_PID
 
+##############################
+# Generation of the final messages
+##############################
+
+# Extract public IP address from deployed EC2 instance
+EC2_PUBLIC_IP=$(aws ec2 describe-instances \
+    --instance-ids "${INSTAPP_ID}" \
+    --query Reservations[0].Instances[0].PublicIpAddress \
+    --output text)
+
+# Extract RDS endpoint
+RDS_ENDPOINT=$(aws rds describe-db-instances \
+    --db-instance-identifier "${DB_IDENTITY_RTN}" \
+    --query DBInstances[0].Endpoint.Address \
+    --output text)
+
 echo "All resources have been successfully running!"
 echo " - EC2 instance ID: ${INSTAPP_ID}"
-echo " - RDS instance identifier: ${DB_IDENTITY}"
+echo " - RDS instance identifier: ${DB_IDENTITY_RTN}"
+echo "----------------------------------------"
+echo "Required info for wp initial setup as follows"
+echo "WP access URL: http://${EC2_PUBLIC_IP}"
+echo "Database Name: ${DB_NAME}"
+echo "Username: ${MASTER_NAME}"
+echo "Password: ${MASTER_PASS}"
+echo "Database Host: ${RDS_ENDPOINT}"
